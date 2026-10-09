@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<h1>Panel del instituto</h1>
+<p class="muted">Datos leídos en tiempo real desde PostgreSQL.</p>
+<div class="grid">
+  <% stats.forEach(s => { %>
+    <a class="stat" href="/<%= s.resource %>">
+      <span class="stat-number"><%= s.total %></span>
+      <span class="stat-label"><%= s.label %></span>
+    </a>
+  <% }) %>
+</div>
+<%- include('../partials/footer') %>

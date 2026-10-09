@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+<h1><%= title %></h1>
+<div id="alert" class="alert" hidden></div>
+
+<section class="card">
+  <h2 id="form-title">Nuevo registro</h2>
+  <form id="crud-form" data-resource="<%= resource %>">
+    <div class="form-grid">
+    <% fields.forEach(f => { %>
+      <label><%= f.label %><%= f.required ? ' *' : '' %>
+        <% if (f.type === 'select') { %>
+          <select name="<%= f.name %>" <%= f.required ? 'required' : '' %>>
+            <% if (!f.noBlank) { %><option value="">-- seleccionar --</option><% } %>
+            <% f.options.forEach(o => { %>
+              <option value="<%= o.value %>"><%= o.label %></option>
+            <% }) %>
+          </select>
+        <% } else if (f.type === 'textarea') { %>
+          <textarea name="<%= f.name %>" rows="2" <%= f.required ? 'required' : '' %>></textarea>
+        <% } else { %>
+          <input type="<%= f.type %>" name="<%= f.name %>"
+            <%= f.required ? 'required' : '' %>
+            <% if (f.step) { %>step="<%= f.step %>"<% } %>
+            <% if (f.min !== undefined) { %>min="<%= f.min %>"<% } %>
+            <% if (f.max !== undefined) { %>max="<%= f.max %>"<% } %>>
+        <% } %>
+      </label>
+    <% }) %>
+    </div>
+    <div class="actions">
+      <button type="submit" class="btn primary" id="submit-btn">Guardar</button>
+      <button type="button" class="btn" id="cancel-edit" hidden>Cancelar edición</button>
+    </div>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Listado (<%= rows.length %>)</h2>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <% columns.forEach(c => { %><th><%= c.label %></th><% }) %>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (rows.length === 0) { %>
+        <tr><td colspan="<%= columns.length + 1 %>" class="muted">No hay registros.</td></tr>
+      <% } %>
+      <% rows.forEach(row => { %>
+        <tr>
+          <% columns.forEach(c => { %>
+            <td><%= row[c.key] == null ? '—' : row[c.key] %></td>
+          <% }) %>
+          <td class="row-actions">
+            <button class="btn small" data-action="edit" data-row="<%= JSON.stringify(row) %>">Editar</button>
+            <button class="btn small danger" data-action="delete" data-id="<%= row.id %>">Eliminar</button>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  </div>
+</section>
+<%- include('../partials/footer') %>

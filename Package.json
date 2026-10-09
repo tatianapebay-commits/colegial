@@ -1,0 +1,21 @@
+{
+  "name": "instituto-backend",
+  "version": "1.0.0",
+  "description": "Proyecto Institucional - API REST de gestión de instituto (Node.js + Express + PostgreSQL, arquitectura MVC)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "db:init": "node scripts/initDb.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

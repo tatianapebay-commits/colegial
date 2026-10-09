@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> · Instituto</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">🎓 Instituto</a>
+  <nav>
+    <% const links = [['/profesores','Profesores','profesores'],['/alumnos','Alumnos','alumnos'],['/cursos','Cursos','cursos'],['/inscripciones','Inscripciones','inscripciones']]; %>
+    <% links.forEach(l => { %>
+      <a href="<%= l[0] %>" class="<%= (typeof active !== 'undefined' && active === l[2]) ? 'active' : '' %>"><%= l[1] %></a>
+    <% }) %>
+    <a href="/api" target="_blank">API</a>
+  </nav>
+</header>
+<main class="container">

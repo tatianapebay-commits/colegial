@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instituto · Gestión</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">🎓 <span>Instituto</span></div>
+      <nav>
+        <a href="#/inicio"        data-route="inicio">🏠 <span>Inicio</span></a>
+        <a href="#/profesores"    data-route="profesores">👨‍🏫 <span>Profesores</span></a>
+        <a href="#/alumnos"       data-route="alumnos">🧑‍🎓 <span>Alumnos</span></a>
+        <a href="#/cursos"        data-route="cursos">📚 <span>Cursos</span></a>
+        <a href="#/inscripciones" data-route="inscripciones">📝 <span>Inscripciones</span></a>
+      </nav>
+      <div class="status" id="status"><i class="dot"></i><span>Conectando…</span></div>
+    </aside>
+
+    <main class="content" id="view"></main>
+  </div>
+
+  <dialog id="modal"></dialog>
+  <dialog id="confirm">
+    <form id="confirm-form">
+      <h3>Confirmar</h3>
+      <p id="confirm-text"></p>
+      <div class="actions">
+        <button type="button" class="btn" id="confirm-no">Cancelar</button>
+        <button type="submit" class="btn danger-solid">Eliminar</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="toasts"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/resources.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
